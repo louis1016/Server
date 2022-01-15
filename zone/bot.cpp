@@ -1867,7 +1867,7 @@ void Bot::SpellProcess() {
 void Bot::BotMeditate(bool isSitting) {
 	if(isSitting) {
 		if(GetManaRatio() < 99.0f || GetHPRatio() < 99.0f) {
-			if (!IsEngaged() && !IsSitting())
+			if ((!IsEngaged() && IsCasterClass(GetClass())) ==false && !IsSitting())
 				Sit();
 		} else {
 			if(IsSitting())
