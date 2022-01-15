@@ -1866,10 +1866,15 @@ void Bot::SpellProcess() {
 
 void Bot::BotMeditate(bool isSitting) {
 	if(isSitting) {
-		if(GetManaRatio() < 99.0f || GetHPRatio() < 99.0f) {
-			if ((!IsEngaged() && IsCasterClass(GetClass())) ==false && !IsSitting())
+		if(GetManaRatio() < 99.0f || GetHPRatio() < 99.0f) 
+		{
+			// if your not engaged or your a caster, you can sit
+			if ((!IsEngaged() || IsBotCaster()) && !IsSitting())
 				Sit();
-		} else {
+		} 
+		
+		
+		else {
 			if(IsSitting())
 				Stand();
 		}
